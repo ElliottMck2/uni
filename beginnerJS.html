@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: #9fffb1;
+        }
+        h1 {
+            margin: 6em 1em 1em;
+            text-align: center;
+            font-size: 60px;
+        }
+        #list{
+            position: absolute;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<h1 id = "colourful"> Magic Colour Changing Header </h1>
+<div id = "list"></div>
+</body>
+<script type="text/javascript">
+    'use strict';
+    var arrayOfColours = ["red", "yellow", "blue", "green", "purple", "pink", "orange", "black", "grey", "brown"]
+    var arrayOfFont = ["Helvetica Neue","Helvetica","Liberation Sans", "Arial" ,"sans serif", "Comic Sans MS", "Times New Roman", "georgia", "Impact"];
+    var arrayOfFontStyles = ["normal", "italic", "oblique"];
+
+    function getRandomItem(array) {
+        var rnd = Math.floor(Math.random() * array.length);
+        return array[rnd];
+    }
+
+    function generateColour(){
+        return getRandomItem(arrayOfColours);
+    }
+    function generateFont(){
+        return getRandomItem(arrayOfFont);
+    }
+    function generateFontStyle(){
+        return getRandomItem(arrayOfFontStyles);
+    }
+
+    window.onload = function () {
+        'use strict';
+        var colourful = document.getElementById('colourful');
+
+        colourful.onmouseenter = function() {
+            this.style.color = generateColour();
+            this.style.fontStyle = generateFontStyle();
+            this.style.fontFamily = generateFont();
+            this.style.textShadow = "5px 5px 1px "+ generateColour(), + " 10px 10px 1px #0000ff";
+            document.getElementById("list").innerHTML += "Colour: " + this.style.color +  ", Shadow: " + this.style.textShadow +
+                " , Font Family: " + this.style.fontFamily + " , Font Style: " + this.style.fontStyle + "<br /> ";
+        };
+
+        colourful.onmouseleave = function() {
+            this.style.color = generateColour();
+            this.style.fontStyle = generateFontStyle();
+            this.style.fontFamily = generateFont();
+            this.style.textShadow = "5px 5px 1px "+ generateColour(), + " 10px 10px 1px #0000ff";
+            document.getElementById("list").innerHTML += "Colour: " + this.style.color +  ", Shadow: " + this.style.textShadow +
+                " , Font Family: " + this.style.fontFamily + " , Font Style: " + this.style.fontStyle + "<br /> ";
+        };
+    };
+
+</script>
+</html>
