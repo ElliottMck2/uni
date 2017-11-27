@@ -1,11 +1,10 @@
 <!doctype html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Title</title>
+    <title>Colourful Header</title>
     <style>
-        body{
+        body {
             background-color: #9fffb1;
         }
         h1 {
@@ -13,7 +12,7 @@
             text-align: center;
             font-size: 60px;
         }
-        #list{
+        #list {
             position: absolute;
             font-size: 12px;
         }
@@ -21,13 +20,13 @@
 </head>
 
 <body>
-<h1 id = "colourful"> Magic Colour Changing Header </h1>
-<div id = "list"></div>
+<h1 id="colourful"> Magic Colour Changing Header </h1>
+<div id="list"></div>
 </body>
 <script type="text/javascript">
     'use strict';
     var arrayOfColours = ["red", "yellow", "blue", "green", "purple", "pink", "orange", "black", "grey", "brown"]
-    var arrayOfFont = ["Helvetica Neue","Helvetica","Liberation Sans", "Arial" ,"sans serif", "Comic Sans MS", "Times New Roman", "georgia", "Impact"];
+    var arrayOfFont = ["Helvetica Neue", "Helvetica", "Liberation Sans", "Arial", "sans serif", "Comic Sans MS", "Times New Roman", "georgia", "Impact"];
     var arrayOfFontStyles = ["normal", "italic", "oblique"];
 
     function getRandomItem(array) {
@@ -35,35 +34,29 @@
         return array[rnd];
     }
 
-    function generateColour(){
-        return getRandomItem(arrayOfColours);
-    }
-    function generateFont(){
-        return getRandomItem(arrayOfFont);
-    }
-    function generateFontStyle(){
-        return getRandomItem(arrayOfFontStyles);
+    function generateRandom(array) {
+        return getRandomItem(array);
     }
 
     window.onload = function () {
         'use strict';
         var colourful = document.getElementById('colourful');
 
-        colourful.onmouseenter = function() {
-            this.style.color = generateColour();
-            this.style.fontStyle = generateFontStyle();
-            this.style.fontFamily = generateFont();
-            this.style.textShadow = "5px 5px 1px "+ generateColour(), + " 10px 10px 1px #0000ff";
-            document.getElementById("list").innerHTML += "Colour: " + this.style.color +  ", Shadow: " + this.style.textShadow +
+        colourful.onmouseenter = function () {
+            this.style.color = generateRandom(arrayOfColours);
+            this.style.fontStyle = generateRandom(arrayOfFontStyles);
+            this.style.fontFamily = generateRandom(arrayOfFont);
+            this.style.textShadow = "5px 5px 1px " + generateRandom(arrayOfColours), +" 10px 10px 1px #0000ff";
+            document.getElementById("list").innerHTML += "Colour: " + this.style.color + ", Shadow: " + this.style.textShadow +
                 " , Font Family: " + this.style.fontFamily + " , Font Style: " + this.style.fontStyle + "<br /> ";
         };
 
-        colourful.onmouseleave = function() {
-            this.style.color = generateColour();
-            this.style.fontStyle = generateFontStyle();
-            this.style.fontFamily = generateFont();
-            this.style.textShadow = "5px 5px 1px "+ generateColour(), + " 10px 10px 1px #0000ff";
-            document.getElementById("list").innerHTML += "Colour: " + this.style.color +  ", Shadow: " + this.style.textShadow +
+        colourful.onmouseleave = function () {
+            this.style.color = generateRandom(arrayOfColours);
+            this.style.fontStyle = generateRandom(arrayOfFontStyles);
+            this.style.fontFamily = generateRandom(arrayOfFont);
+            this.style.textShadow = "5px 5px 1px " + generateRandom(arrayOfColours), +" 10px 10px 1px #0000ff";
+            document.getElementById("list").innerHTML += "Colour: " + this.style.color + ", Shadow: " + this.style.textShadow +
                 " , Font Family: " + this.style.fontFamily + " , Font Style: " + this.style.fontStyle + "<br /> ";
         };
     };
