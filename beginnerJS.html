@@ -34,28 +34,24 @@
         return array[rnd];
     }
 
-    function generateRandom(array) {
-        return getRandomItem(array);
-    }
-
     window.onload = function () {
         'use strict';
         var colourful = document.getElementById('colourful');
 
         colourful.onmouseenter = function () {
-            this.style.color = generateRandom(arrayOfColours);
-            this.style.fontStyle = generateRandom(arrayOfFontStyles);
-            this.style.fontFamily = generateRandom(arrayOfFont);
-            this.style.textShadow = "5px 5px 1px " + generateRandom(arrayOfColours), +" 10px 10px 1px #0000ff";
+            this.style.color = getRandomItem(arrayOfColours);
+            this.style.fontStyle = getRandomItem(arrayOfFontStyles);
+            this.style.fontFamily = getRandomItem(arrayOfFont);
+            this.style.textShadow = "5px 5px 1px " + getRandomItem(arrayOfColours), +" 10px 10px 1px #0000ff";
             document.getElementById("list").innerHTML += "Colour: " + this.style.color + ", Shadow: " + this.style.textShadow +
                 " , Font Family: " + this.style.fontFamily + " , Font Style: " + this.style.fontStyle + "<br /> ";
         };
 
         colourful.onmouseleave = function () {
-            this.style.color = generateRandom(arrayOfColours);
-            this.style.fontStyle = generateRandom(arrayOfFontStyles);
-            this.style.fontFamily = generateRandom(arrayOfFont);
-            this.style.textShadow = "5px 5px 1px " + generateRandom(arrayOfColours), +" 10px 10px 1px #0000ff";
+            this.style.color = getRandomItem(arrayOfColours);
+            this.style.fontStyle = getRandomItem(arrayOfFontStyles);
+            this.style.fontFamily = getRandomItem(arrayOfFont);
+            this.style.textShadow = "5px 5px 1px " + getRandomItem(arrayOfColours), +" 10px 10px 1px #0000ff";
             document.getElementById("list").innerHTML += "Colour: " + this.style.color + ", Shadow: " + this.style.textShadow +
                 " , Font Family: " + this.style.fontFamily + " , Font Style: " + this.style.fontStyle + "<br /> ";
         };
