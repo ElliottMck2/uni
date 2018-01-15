@@ -1,10 +1,10 @@
 #include <mbed.h>
-
 #include <stdbool.h>
 
 int main() {
     bool flashing = false;
 
+    DigitalOut blue(PTB21);
     DigitalOut red(PTB22);
     DigitalIn  btn(PTC6);
 
@@ -14,13 +14,13 @@ int main() {
 
         printf("button %d\n", btn.read() );
         if(flashing){
+            blue.write(1);
             red.write(0);
             wait(0.5);
             red.write(1);
             wait(0.5);
         }else{
-            red.write(1);
-            wait(1);
+            blue.write(0);
         }
     }
 }
