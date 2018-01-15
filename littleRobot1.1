@@ -1,0 +1,41 @@
+#include <mbed.h>
+
+int main() {
+    DigitalOut green(PTE26);
+    DigitalOut red(PTB22);
+    DigitalOut blue(PTB21);
+    while(1) {
+      //red on
+      green.write(1);
+      blue.write(1);
+      red.write(0);
+      wait(0.2);
+      //all off
+      green.write(1);
+      blue.write(1);
+      red.write(1);
+      wait(0.2);
+      //blue on
+      green.write(1);
+      blue.write(0);
+      red.write(1);
+      wait(0.2);
+      //all off
+      green.write(1);
+      blue.write(1);
+      red.write(1);
+      wait(0.2);
+      //green on
+      green.write(0);
+      blue.write(1);
+      red.write(1);
+      wait(0.2);
+      //all off
+      green.write(1);
+      blue.write(1);
+      red.write(1);
+      wait(0.2);
+      //back to red
+      red.write(0);
+    }
+}
