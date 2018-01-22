@@ -2,24 +2,58 @@
 
 DigitalOut   red(LED_RED);
 DigitalOut green(LED_GREEN);
+DigitalOut   blue(LED_BLUE);
 
-void on(void)
+
+void redLight(void)
 {
     red.write(0);
+    blue.write(1);
+    green.write(1);
     puts("rising 0->1");
 }
-void off(void)
+void greenLight(void)
 {
     red.write(1);
+    green.write(0);
+    blue.write(1);
+    puts("falling 1->0");
+}
+
+void blueLight(void)
+{
+    red.write(0);
+    green.write(0);
+    blue.write(1);
+    puts("falling 1->0");
+}
+
+void yellowLight(void)
+{
+    red.write(1);
+    green.write(1);
+    blue.write(0);
+    puts("falling 1->0");
+}
+
+void whiteLight(void)
+{
+    red.write(0);
+    green.write(0);
+    blue.write(0);
     puts("falling 1->0");
 }
 
 int main() {
-    InterruptIn  left(SW2);
-    InterruptIn right(SW3);
+    InterruptIn  joystickUp(A2);
+    InterruptIn joystickDown(A3);
+    InterruptIn  joystickLeft(A4);
+    InterruptIn joystickRight(A5);
 
-    left.rise(on);
-    right.fall(off);
+    joystickUp.rise(redLight);
+    joystickDown.fall(greenLight);
+    joystickLeft.fall(blueLight);
+    joystickRight.fall(yellowLight);
     while(1) {
         /* GNDN */
     }
