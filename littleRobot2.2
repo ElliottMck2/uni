@@ -1,0 +1,29 @@
+#include <mbed.h>
+
+DigitalOut blue(LED_BLUE);
+
+Ticker  pit;
+
+void flash(void) {
+   static unsigned int phase=0;
+
+   if(phase==0) blue.write(0); /* on */
+   if(phase==1) blue.write(1); /* off */
+   if(phase==2) blue.write(0);
+   if(phase==3) blue.write(0);
+   if(phase==4) blue.write(0);
+   if(phase==5) blue.write(1);
+   if(phase==6) blue.write(1);
+   if(phase==7) blue.write(1);
+   if(phase==8) blue.write(1);
+   if(phase==9) blue.write(1);
+   if(phase==10) blue.write(1);
+   if(phase==11) blue.write(1);
+   phase++;
+   if(phase==11) phase=0;
+}
+
+int main(void) {
+  pit.attach(flash,0.1);
+  while(1);
+}
