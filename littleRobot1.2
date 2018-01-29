@@ -1,27 +1,19 @@
-#include <mbed.h>
-#include <stdbool.h>
+#include "mbed.h"
 
-int main() {
-    bool flashing = false;
+PwmOut red(D5);
+PwmOut speaker(D6);
+AnalogIn rightDial(A1);
+int main()
+{
+    red.period_ms(10);/* suitably fast 100Hz */
 
-    DigitalOut blue(PTB21);
-    DigitalOut red(PTB22);
-    DigitalIn  btn(PTC6);
-
-    while(1) {
-        if( btn.read() ) flashing = true;
-            else         flashing = false;
-
-        printf("button %d\n", btn.read() );
-        if(flashing){
-            blue.write(1);
-            red.write(0);
-            wait(0.5);
-            red.write(1);
-            wait(0.5);
-        }else{
-            //on press and hold of button, light goes blue
-            blue.write(0);
-        }
+    while(1){
+        /* ramp up from 0 to 100% */
+          float brightness = rightDial.read()*3.3;
+          float volume = 1/(rightDial.read()*20.0e3);
+          red.write(brightness);
+          speaker.period(volume);
+          speaker.write(0.5);
+          wait_ms(100);
     }
 }
