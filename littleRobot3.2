@@ -8,6 +8,7 @@ int main()
 
     while(1){
         /* ramp up from 0 to 100% */
+        //*3.3 as the top voltage is 3.3V
           float brightness = rightDial.read()*3.3;
           red.write(brightness);
           wait_ms(100);
