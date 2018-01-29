@@ -1,0 +1,17 @@
+#include "mbed.h"
+
+PwmOut red(D5);
+AnalogIn dial(A1);
+int main()
+{
+    red.period_ms(10);/* suitably fast 100Hz */
+
+    while(1){
+        /* ramp up from 0 to 100% */
+          float duty = dial.read()*3.3;
+          float brightness = exp(duty)/100;
+          red.write(duty);
+          wait_ms(100);
+
+    }
+}
