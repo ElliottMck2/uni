@@ -28,7 +28,6 @@ int main()
         lcd.circle(((acc_data.x)*100)+64, ((acc_data.y)*-100)+16, 10, 1);
         lcd.fillcircle(((acc_data.x)*100)+64, ((acc_data.y)*-100)+16, 6, 1);
         lcd.locate(0,20);
-        j++;
         wait(0.1);
     }
 }
