@@ -19,20 +19,15 @@ int main()
     int j=0;
     lcd.cls();
     lcd.locate(0,0);
-    lcd.printf("mbed application shield!");
     lcd.locate(0,10);
-    lcd.printf("char %dx%d : %dx%d pixels",
-               lcd.columns(), lcd.rows(),
-               lcd.width(), lcd.height() );
 
     while(true) {
       lcd.cls();
         acc.getAxis(acc_data);
-        lcd.circle(((acc_data.x)*100)+60, ((acc_data.y)*-100)+18, 14, 1);
-        lcd.circle(((acc_data.x)*100)+60, ((acc_data.y)*-100)+18, 10, 1);
-        lcd.fillcircle(((acc_data.x)*100)+60, ((acc_data.y)*-100)+18, 6, 1);
+        lcd.circle(((acc_data.x)*100)+64, ((acc_data.y)*-100)+16, 14, 1);
+        lcd.circle(((acc_data.x)*100)+64, ((acc_data.y)*-100)+16, 10, 1);
+        lcd.fillcircle(((acc_data.x)*100)+64, ((acc_data.y)*-100)+16, 6, 1);
         lcd.locate(0,20);
-        // lcd.printf("Counting : %4d",acc_data.x);
         j++;
         wait(0.1);
     }
