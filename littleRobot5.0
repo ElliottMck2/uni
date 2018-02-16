@@ -15,8 +15,6 @@ int main()
 
     acc.enable();
 
-
-    int j=0;
     lcd.cls();
     lcd.locate(0,0);
     lcd.locate(0,10);
