@@ -2,6 +2,21 @@
 #include <rtos.h>
 #include <mbed_events.h>
 
+Serial pc(USBTX, USBRX);
+
+static int counter = 0;
+
+
+void addToCounter(){
+ counter = counter + 1;
+ pc.printf(" x = %d\n", counter);
+}
+
+void removeFromCounter(){
+ counter = counter - 1;
+ pc.printf(" x = %d\n", counter);
+}
+
 DigitalOut red(LED1,1);
 void flash(void){
     red = !red;
@@ -11,20 +26,17 @@ void blink(void){
     green = !green;
 }
 
-Serial pc(USBTX, USBRX);
 Thread worker;
+
 EventQueue queue ;
 
-Thread thread;
-
+InterruptIn swLeft(SW2);
+InterruptIn swRight(SW3);
 int main() {
-    pc.printf("ready");
+
+    swLeft.fall(addToCounter);
+    swRight.fall(removeFromCounter);
     queue.call_every(500, flash);
     queue.call_every(300, blink);
-    pc.printf("dispatching...");
-    queue.dispatch_forever();
-    //line below does the same thing as line above
-    //worker.start(callback(&queue, &EventQueue::dispatch_forever ));
-    pc.printf("dispatched");
-
+    worker.start(callback(&queue, &EventQueue::dispatch_forever ));
 }
