@@ -1,4 +1,2 @@
-# uni
-University Work
-
-Pin Names for FRDM-K64F https://os.mbed.com/teams/Freescale/wiki/frdm-k64f-pinnames
+# s7.1.a
+Java end of UDP Communications
